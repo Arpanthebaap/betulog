@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Betulog: a field and lab log for birch health surveys"
+type: software
+version: 0.1.0
+date-released: 2026-10-07
+license: MIT
+authors:
+  - family-names: "Ghosh"
+    given-names: "Arpan"
+repository-code: "https://github.com/Arpanthebaap/betulog"
+keywords: [birch, Betula, forest pathology, crown condition, forest health, fungal isolates]

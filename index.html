@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Betulog: birch crown health and isolate log</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eceff1;--ink:#1c1b20;--mut:#5b606a;--card:#fafbfb;--line:#cdd3d8;--ac:#a63f17;--c0:#4c9a3f;--c1:#b8c93a;--c2:#e3a02b;--c3:#cf4a2a;--c4:#25232a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141417;--ink:#ecebef;--mut:#9a9ea8;--card:#1d1d22;--line:#34353c;--ac:#f0865a;--c4:#8d8a99}}
+:root[data-theme="dark"]{--bg:#141417;--ink:#ecebef;--mut:#9a9ea8;--card:#1d1d22;--line:#34353c;--ac:#f0865a;--c4:#8d8a99}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'Instrument Sans',system-ui,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:clamp(2.3rem,8vw,4rem);margin:.1em 0 0;letter-spacing:-.03em;line-height:1}
+h1 b{color:var(--ac)}
+.sub{color:var(--mut);max-width:62ch;margin:.7em 0 1.2em}
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+nav button{background:transparent;color:var(--ink);border:1px solid var(--line)}
+nav button[aria-selected=true]{background:var(--ink);color:var(--bg)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:14px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+label{display:block;font-size:.82rem;color:var(--mut);margin-bottom:2px}
+input,select,textarea,button{font:inherit;color:var(--ink)}
+input[type=text],input[type=number],input[type=date],select,textarea{width:100%;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+button{background:var(--ac);color:#fff;border:0;border-radius:6px;padding:8px 13px;cursor:pointer;font-weight:600}
+button.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.chk{display:flex;flex-wrap:wrap;gap:6px 16px;margin:10px 0}
+.chk label{display:flex;gap:6px;align-items:center;color:var(--ink);font-size:.92rem;margin:0}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.86rem;min-width:620px}
+th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.pill{display:inline-block;min-width:1.6em;text-align:center;border-radius:4px;color:#fff;font-weight:700;padding:0 6px}
+.bar{display:flex;height:24px;border-radius:4px;overflow:hidden;margin:8px 0}
+.note{font-size:.82rem;color:var(--mut);max-width:78ch}
+[hidden]{display:none!important}
+</style></head><body><main>
+<h1>Betu<b>log</b></h1>
+<p class="sub">A field and lab log for birch health surveys: score crowns in the ICP Forests defoliation classes, record stem and root symptoms, map affected trees, and tie each tree to the fungal isolates taken from it. Built for sorting out why trees in a stand decline, one tree and one isolate at a time.</p>
+<nav role="tablist"><button role="tab" data-t="a" aria-selected="true">1 Plot and trees</button><button role="tab" data-t="b" aria-selected="false">2 Isolates</button><button role="tab" data-t="c" aria-selected="false">3 Summary</button></nav>
+
+<section id="a">
+<div class="box"><b>Plot</b><div class="g" style="margin-top:8px">
+<div><label for="plot">Plot ID</label><input type="text" id="plot" placeholder="e.g. ALN-07"></div>
+<div><label for="site">Site / stand</label><input type="text" id="site"></div>
+<div><label for="stand">Stand type</label><select id="stand"><option>Young plantation</option><option>Older stand</option></select></div>
+<div><label for="age">Stand age (yr)</label><input type="number" id="age" min="0"></div>
+<div><label for="date">Date</label><input type="date" id="date"></div>
+<div><label for="obs">Observer</label><input type="text" id="obs"></div></div></div>
+<div class="box"><b>Tree</b>
+<div class="g" style="margin-top:8px">
+<div><label for="x">X in plot (m)</label><input type="number" id="x" step="0.1"></div>
+<div><label for="y">Y in plot (m)</label><input type="number" id="y" step="0.1"></div>
+<div><label for="dbh">DBH (cm)</label><input type="number" id="dbh" min="0" step="0.1"></div>
+<div><label for="defol">Defoliation / transparency %</label><input type="number" id="defol" min="0" max="100" value="0"></div>
+<div><label for="dieb">Crown dieback %</label><input type="number" id="dieb" min="0" max="100" value="0"></div>
+<div><label for="disc">Foliage discolouration %</label><input type="number" id="disc" min="0" max="100" value="0"></div></div>
+<div class="chk" id="sy"></div>
+<div class="g"><div style="grid-column:1/-1"><label for="nt">Notes</label><input type="text" id="nt"></div></div>
+<div class="row"><button id="addT">Add tree</button><button class="alt" id="gps">Save GPS to notes</button></div></div>
+<div class="tw"><table><thead><tr><th>Tree</th><th>Class</th><th>Defol %</th><th>Dieback %</th><th>Discol %</th><th>Symptoms</th><th>Notes</th><th></th></tr></thead><tbody id="tt"></tbody></table></div>
+<div class="row"><button id="exT">Export trees CSV</button></div>
+</section>
+
+<section id="b" hidden>
+<div class="box"><b>Fungal isolate</b><div class="g" style="margin-top:8px">
+<div><label for="iid">Isolate ID</label><input type="text" id="iid"></div>
+<div><label for="itree">Tree ID</label><select id="itree"></select></div>
+<div><label for="itis">Tissue</label><select id="itis"><option>Leaf</option><option>Twig</option><option>Bark lesion margin</option><option>Inner bark</option><option>Xylem</option><option>Root</option><option>Fruiting body</option><option>Soil</option></select></div>
+<div><label for="idt">Date</label><input type="date" id="idt"></div>
+<div><label for="imed">Medium</label><input type="text" id="imed" placeholder="MEA, V8, CMA-PARP"></div>
+<div><label for="imor">Morphotype</label><input type="text" id="imor"></div>
+<div><label for="its">Sequence / accession</label><input type="text" id="its" placeholder="ITS, GenBank acc."></div>
+<div><label for="ist">Status</label><select id="ist"><option>Plated</option><option>Pure culture</option><option>DNA extracted</option><option>Sequenced</option><option>Identified</option><option>Contaminated</option></select></div></div>
+<div class="row"><button id="addI">Add isolate</button></div></div>
+<div class="tw"><table><thead><tr><th>Isolate</th><th>Tree</th><th>Tissue</th><th>Date</th><th>Medium</th><th>Morphotype</th><th>Sequence</th><th>Status</th><th></th></tr></thead><tbody id="it"></tbody></table></div>
+<div class="row"><button id="exI">Export isolates CSV</button></div>
+</section>
+
+<section id="c" hidden>
+<div class="box"><label for="sp">Plot</label><select id="sp"></select><div id="sm"></div></div>
+<div class="box"><b>Tree map</b><div id="mp"></div><p class="note">Dot colour is the crown class; dot size scales with DBH. Needs X and Y for each tree.</p></div>
+<div class="box"><b>Symptom contrast</b><div class="tw"><table><thead><tr><th>Symptom</th><th>Trees with</th><th>Mean defol % with</th><th>Mean defol % without</th></tr></thead><tbody id="ct"></tbody></table></div>
+<p class="note">Descriptive only. Export the CSV and test associations in R with the proper design (plot as a random effect).</p></div>
+<div class="box"><b>Sampling prompts</b><ul id="hy"></ul><p class="note">These are prompts for what to sample, drawn from general forest-pathology knowledge, not diagnoses. Check the literature and confirm every identification by culture and DNA sequencing.</p></div>
+</section>
+
+<p class="note" style="margin-top:20px">Classes follow the ICP Forests defoliation scale: 0 none (0-10%), 1 slight (11-25%), 2 moderate (26-60%), 3 severe (61-99%), 4 dead. Scoring is visual and observer dependent, so calibrate observers against each other and note the assessment date relative to leaf flush. Data stays in this browser; export CSV regularly.</p>
+</main>
+<script>
+const $=i=>document.getElementById(i),KEY='betulog-v1';
+let S={trees:[],iso:[]};try{S=Object.assign(S,JSON.parse(localStorage.getItem(KEY)||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const SY=[['canker','Stem lesion or canker'],['bleed','Sap bleeding'],['fruit','Fruiting bodies'],['crack','Bark cracks / frost'],['insect','Insect damage'],['browse','Browsing'],['root','Root-collar rot / mycelium'],['dead','Tree dead']];
+const CL=['var(--c0)','var(--c1)','var(--c2)','var(--c3)','var(--c4)'],CN=['None','Slight','Moderate','Severe','Dead'];
+const cls=t=>(t.dead||t.defol>=100)?4:t.defol<=10?0:t.defol<=25?1:t.defol<=60?2:3;
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const num=i=>{const v=parseFloat($(i).value);return isNaN(v)?null:v};
+$('sy').innerHTML=SY.map(([k,l])=>`<label><input type="checkbox" id="s_${k}">${l}</label>`).join('');
+$('date').valueAsDate=new Date();$('idt').valueAsDate=new Date();
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));['a','b','c'].forEach(s=>$(s).hidden=s!==b.dataset.t);refresh()});
+$('addT').onclick=()=>{const p=$('plot').value.trim();if(!p){alert('Enter a plot ID first.');return}
+const d=num('defol');if(d==null||d<0||d>100){alert('Defoliation must be 0 to 100.');return}
+const n=S.trees.filter(t=>t.plot===p).length+1,t={id:p+'-T'+String(n).padStart(3,'0'),plot:p,site:$('site').value,stand:$('stand').value,age:num('age'),date:$('date').value,obs:$('obs').value,x:num('x'),y:num('y'),dbh:num('dbh'),defol:d,dieb:num('dieb')||0,disc:num('disc')||0,notes:$('nt').value};
+SY.forEach(([k])=>t[k]=$('s_'+k).checked);S.trees.push(t);save();
+['x','y','dbh','nt'].forEach(i=>$(i).value='');$('defol').value=0;$('dieb').value=0;$('disc').value=0;SY.forEach(([k])=>$('s_'+k).checked=false);refresh()};
+$('gps').onclick=()=>{if(!navigator.geolocation){alert('GPS not available.');return}navigator.geolocation.getCurrentPosition(p=>{$('nt').value=($('nt').value+' GPS '+p.coords.latitude.toFixed(5)+','+p.coords.longitude.toFixed(5)).trim()},()=>alert('Could not get position. Check permission.'))};
+$('addI').onclick=()=>{const id=$('iid').value.trim(),tr=$('itree').value;if(!id||!tr){alert('Isolate ID and a tree are required. Add trees first.');return}
+S.iso.push({id,tree:tr,tissue:$('itis').value,date:$('idt').value,medium:$('imed').value,morph:$('imor').value,seq:$('its').value,status:$('ist').value});save();$('iid').value='';refresh()};
+document.addEventListener('click',e=>{const a=e.target.dataset;if(a.dt!=null){S.trees.splice(+a.dt,1);save();refresh()}if(a.di!=null){S.iso.splice(+a.di,1);save();refresh()}});
+const csv=(rows,cols,name)=>{const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const s=[cols.join(','),...rows.map(r=>cols.map(c=>q(r[c])).join(','))].join('\n');const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(s);a.download=name;a.click()};
+$('exT').onclick=()=>csv(S.trees.map(t=>({...t,class:cls(t)})),['id','plot','site','stand','age','date','obs','x','y','dbh','defol','dieb','disc','class',...SY.map(s=>s[0]),'notes'],'betulog_trees.csv');
+$('exI').onclick=()=>csv(S.iso,['id','tree','tissue','date','medium','morph','seq','status'],'betulog_isolates.csv');
+const mean=a=>a.length?(a.reduce((x,y)=>x+y,0)/a.length).toFixed(1):'n/a';
+function refresh(){
+$('tt').innerHTML=S.trees.map((t,i)=>`<tr><td>${esc(t.id)}</td><td><span class="pill" style="background:${CL[cls(t)]}">${cls(t)}</span></td><td>${t.defol}</td><td>${t.dieb}</td><td>${t.disc}</td><td>${SY.filter(([k])=>t[k]).map(s=>s[1]).join(', ')}</td><td>${esc(t.notes)}</td><td><button class="alt" data-dt="${i}" aria-label="Delete tree">x</button></td></tr>`).join('')||'<tr><td colspan="8">No trees yet.</td></tr>';
+$('itree').innerHTML=S.trees.map(t=>`<option>${esc(t.id)}</option>`).join('');
+$('it').innerHTML=S.iso.map((r,i)=>`<tr><td>${esc(r.id)}</td><td>${esc(r.tree)}</td><td>${r.tissue}</td><td>${r.date}</td><td>${esc(r.medium)}</td><td>${esc(r.morph)}</td><td>${esc(r.seq)}</td><td>${r.status}</td><td><button class="alt" data-di="${i}" aria-label="Delete isolate">x</button></td></tr>`).join('')||'<tr><td colspan="9">No isolates yet.</td></tr>';
+const ps=[...new Set(S.trees.map(t=>t.plot))],cur=$('sp').value;
+$('sp').innerHTML=ps.map(p=>`<option${p===cur?' selected':''}>${esc(p)}</option>`).join('');summary()}
+$('sp').onchange=summary;
+const HY={canker:'Stem lesions: sample the lesion margin and inner bark; candidates include canker-causing ascomycetes and bark-infecting oomycetes.',bleed:'Sap bleeding: sample inner bark at the active lesion edge; consider Phytophthora-type baiting and bacterial isolation.',fruit:'Fruiting bodies: record and photograph them, identify the species, and sample the colonised wood (wood-decay fungi).',root:'Root-collar rot or mycelium: sample root collar, roots and soil; consider root-rot fungi such as Armillaria.',crack:'Bark cracks: record recent frost or drought; cracks give secondary fungi entry, so sample around them.',insect:'Insect damage: keep specimens for identification and check for fungi carried on them.',browse:'Browsing: record browsing intensity and height; stressed trees may be more open to pathogens.'};
+function summary(){
+const p=$('sp').value,T=S.trees.filter(t=>t.plot===p);
+if(!T.length){$('sm').innerHTML='<p class="note">Add trees to see a summary.</p>';$('mp').innerHTML='';$('ct').innerHTML='';$('hy').innerHTML='';return}
+const n=T.length,c=[0,0,0,0,0];T.forEach(t=>c[cls(t)]++);
+const isoN=S.iso.filter(r=>T.some(t=>t.id===r.tree)).length;
+$('sm').innerHTML=`<p style="margin:.6em 0 0">${n} trees, mean defoliation ${mean(T.map(t=>t.defol))}%, mean dieback ${mean(T.map(t=>t.dieb))}%, mortality ${(100*c[4]/n).toFixed(0)}%, trees in class 2 or worse ${(100*(c[2]+c[3]+c[4])/n).toFixed(0)}%, isolates ${isoN}.</p><div class="bar" role="img" aria-label="Class distribution">${c.map((v,i)=>`<i style="width:${100*v/n}%;background:${CL[i]}"></i>`).join('')}</div><p class="note">${c.map((v,i)=>CN[i]+' '+v).join(' | ')}</p>`;
+const xy=T.filter(t=>t.x!=null&&t.y!=null);
+if(xy.length){const xs=xy.map(t=>t.x),ys=xy.map(t=>t.y),x0=Math.min(...xs),y0=Math.min(...ys),w=Math.max(Math.max(...xs)-x0,1),h=Math.max(Math.max(...ys)-y0,1),sc=Math.min(320/w,320/h);
+$('mp').innerHTML=`<svg viewBox="0 0 360 ${Math.round(h*sc)+40}" style="width:100%;max-width:520px" role="img" aria-label="Tree map">${xy.map(t=>`<circle cx="${20+(t.x-x0)*sc}" cy="${20+(t.y-y0)*sc}" r="${Math.min(14,4+(t.dbh||5)/4)}" fill="${CL[cls(t)]}" stroke="var(--ink)" stroke-width=".6"><title>${esc(t.id)} class ${cls(t)}</title></circle>`).join('')}</svg>`}else $('mp').innerHTML='<p class="note">No coordinates recorded.</p>';
+$('ct').innerHTML=SY.filter(s=>s[0]!=='dead').map(([k,l])=>{const w=T.filter(t=>t[k]),o=T.filter(t=>!t[k]);return `<tr><td>${l}</td><td>${w.length} of ${n}</td><td>${mean(w.map(t=>t.defol))}</td><td>${mean(o.map(t=>t.defol))}</td></tr>`}).join('');
+const h=Object.keys(HY).filter(k=>T.filter(t=>t[k]).length/n>=.1);
+$('hy').innerHTML=h.length?h.map(k=>`<li>${HY[k]}</li>`).join(''):'<li>No symptom is present on 10% or more of trees in this plot.</li>'}
+refresh();
+</script></body></html>

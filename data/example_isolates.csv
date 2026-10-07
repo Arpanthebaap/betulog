@@ -1,0 +1,7 @@
+id,tree,tissue,date,medium,morph,seq,status
+ISO-001,DEMO-01-T001,Root,2026-08-18,MEA,synthetic,,Pure culture
+ISO-002,DEMO-01-T005,Bark lesion margin,2026-08-18,MEA,synthetic,,Plated
+ISO-003,DEMO-01-T009,Root,2026-08-18,MEA,synthetic,,Pure culture
+ISO-004,DEMO-01-T013,Xylem,2026-08-18,MEA,synthetic,,Sequenced
+ISO-005,DEMO-01-T017,Root,2026-08-18,MEA,synthetic,,Sequenced
+ISO-006,DEMO-01-T021,Xylem,2026-08-18,MEA,synthetic,,Sequenced
