@@ -4,6 +4,7 @@
 *Independent Researcher (Applied AI Systems & Biometrics), Birbhum, West Bengal, India*  
 **Contact:** `arpanghosh984@gmail.com` | [GitHub Profile](https://github.com/Arpanthebaap)  
 Version 0.2.0 · MIT licence  
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23369867.svg)](https://doi.org/10.5281/zenodo.23369867)
 [![Tests](https://github.com/Arpanthebaap/betulog/actions/workflows/tests.yml/badge.svg)](https://github.com/Arpanthebaap/betulog/actions/workflows/tests.yml)
 [![Pages](https://github.com/Arpanthebaap/betulog/actions/workflows/pages.yml/badge.svg)](https://github.com/Arpanthebaap/betulog/actions/workflows/pages.yml)
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
@@ -325,8 +326,9 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
   title        = {Betulog: Linked Crown-Health, Symptom, and Isolate Records for Birch Surveys, with Observer Calibration, Spatial Diagnostics, and Design-Power Analysis},
   year         = {2026},
   version      = {0.2.0},
-  publisher    = {GitHub},
-  url          = {https://github.com/Arpanthebaap/betulog}
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.23369867},
+  url          = {https://doi.org/10.5281/zenodo.23369867}
 }
 ```
 *See [CITATION.cff](CITATION.cff) for machine-readable CFF format.*
