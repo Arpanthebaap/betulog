@@ -1,0 +1,18 @@
+[project]
+name = "betulog"
+version = "0.2.0"
+description = "Linked crown-health, symptom and isolate records for birch surveys, with observer calibration, spatial diagnostics and design-power tools"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = ["numpy", "pandas", "scipy", "statsmodels", "tabulate"]
+authors = [{ name = "Arpan Ghosh" }]
+[project.optional-dependencies]
+dev = ["pytest"]
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+pythonpath = ["src"]

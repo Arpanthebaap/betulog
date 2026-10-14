@@ -1,7 +1,13 @@
 id,tree,tissue,date,medium,morph,seq,status
-ISO-001,DEMO-01-T001,Root,2026-08-18,MEA,synthetic,,Pure culture
-ISO-002,DEMO-01-T005,Bark lesion margin,2026-08-18,MEA,synthetic,,Plated
-ISO-003,DEMO-01-T009,Root,2026-08-18,MEA,synthetic,,Pure culture
-ISO-004,DEMO-01-T013,Xylem,2026-08-18,MEA,synthetic,,Sequenced
-ISO-005,DEMO-01-T017,Root,2026-08-18,MEA,synthetic,,Sequenced
-ISO-006,DEMO-01-T021,Xylem,2026-08-18,MEA,synthetic,,Sequenced
+ISO-001,DEMO-A-T001,Bark lesion margin,2026-08-18,MEA,synthetic,,Plated
+ISO-002,DEMO-A-T007,Xylem,2026-08-18,MEA,synthetic,,Plated
+ISO-003,DEMO-A-T013,Root,2026-08-18,MEA,synthetic,,Plated
+ISO-004,DEMO-A-T019,Inner bark,2026-08-18,MEA,synthetic,,Plated
+ISO-005,DEMO-B-T001,Bark lesion margin,2026-08-18,MEA,synthetic,,Plated
+ISO-006,DEMO-B-T007,Xylem,2026-08-18,MEA,synthetic,,Plated
+ISO-007,DEMO-B-T013,Root,2026-08-18,MEA,synthetic,,Plated
+ISO-008,DEMO-B-T019,Inner bark,2026-08-18,MEA,synthetic,,Plated
+ISO-009,DEMO-C-T001,Bark lesion margin,2026-08-18,MEA,synthetic,,Plated
+ISO-010,DEMO-C-T007,Xylem,2026-08-18,MEA,synthetic,,Plated
+ISO-011,DEMO-C-T013,Root,2026-08-18,MEA,synthetic,,Plated
+ISO-012,DEMO-C-T019,Inner bark,2026-08-18,MEA,synthetic,,Plated

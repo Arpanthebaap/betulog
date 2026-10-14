@@ -1,0 +1,15 @@
+scenario,n_plots,effect,sd_obs,power
+A_plots,6,5.0,6,0.218
+A_plots,10,5.0,6,0.368
+A_plots,15,5.0,6,0.552
+A_plots,20,5.0,6,0.69
+A_plots,30,5.0,6,0.862
+A_plots,40,5.0,6,0.96
+B_observer_sd,15,5.0,0,0.61
+B_observer_sd,15,5.0,6,0.552
+B_observer_sd,15,5.0,10,0.488
+B_observer_sd,15,5.0,15,0.378
+C_effect,15,2.5,6,0.178
+C_effect,15,5.0,6,0.552
+C_effect,15,7.5,6,0.858
+C_effect,15,10.0,6,0.995
